@@ -1058,8 +1058,9 @@ GameStatistics Halite::run_game(std::vector<std::string>* names_,
 
     auto game_complete = [&]() -> bool {
         const auto num_living_players = std::count(living_players.begin(), living_players.end(), true);
-        bool both_teams = false;
+        bool both_teams = true;
         if (networking.team_battle){
+          both_teams = true;
           unsigned int alive_team = -1;
           for (hlt::PlayerId player_id = 0; player_id < number_of_players; player_id++) {
             if (living_players[player_id]) {
