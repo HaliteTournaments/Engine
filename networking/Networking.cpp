@@ -37,9 +37,16 @@ std::string Networking::serialize_map(const hlt::Map& map) {
     oss << std::setprecision(SERIALIZATION_PRECISION);
     oss << std::fixed;
 
+    hlt::PlayerId initial_id;
+    if (team_battle){
+      initial_id = 4;
+    }else{
+      initial_id = 0;
+    }
+    
     for (hlt::PlayerId player_id = 0; player_id < player_count();
          player_id++) {
-        oss << ' ' << (int) player_id;
+      oss << ' ' << (int) (player_id + initial_id);
 
         auto num_ships = map.ships[player_id].size();
 
