@@ -342,9 +342,9 @@ int main(int argc, char** argv) {
           std::string rank;
 
           if (player_stats.tag == 1 || mate_stats.tag == 1){
-            rank = "1st";
-          }else{
             rank = "2nd";
+          }else{
+            rank = "1st";
           }
 
           std::cout

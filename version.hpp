@@ -1,1 +1,1 @@
-#define HALITE_VERSION "HTv1.0-045a7fd"
+#define HALITE_VERSION "HTv1.0-5923b93"

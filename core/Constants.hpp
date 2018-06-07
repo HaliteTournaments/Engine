@@ -23,11 +23,11 @@ namespace hlt {
         int SHIPS_PER_PLAYER = 5; //3
         int PLANETS_PER_PLAYER = 6; //6
         unsigned int EXTRA_PLANETS = 8; //4
-        unsigned int MAX_TURNS = 320; //300
+        unsigned int MAX_TURNS = 350; //300
 
         double DRAG = 10.0;
-        double MAX_SPEED = 8.5;
-        double MAX_ACCELERATION = 8.5;
+        double MAX_SPEED = 8;
+        double MAX_ACCELERATION = 8;
 
         double SHIP_RADIUS = 0.5; //0.5
 

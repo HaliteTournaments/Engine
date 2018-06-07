@@ -37,6 +37,15 @@ std::string Networking::serialize_map(const hlt::Map& map) {
     oss << std::setprecision(SERIALIZATION_PRECISION);
     oss << std::fixed;
 
+    // This is used to send different ids when
+    // there is a team battle
+    /*hlt::PlayerId initial_id;
+    if (team_battle){
+      initial_id = 4;
+    }else{
+      initial_id = 0;
+    }*/
+
     for (hlt::PlayerId player_id = 0; player_id < player_count();
          player_id++) {
         oss << ' ' << (int) player_id;
@@ -68,9 +77,6 @@ std::string Networking::serialize_map(const hlt::Map& map) {
             oss << ' ' << ship.docking_progress;
             oss << ' ' << ship.weapon_cooldown;
         }
-        /*if (team_battle){
-          std::cout << (int) get_team(player_id) << std::endl;
-        }*/
     }
 
     auto num_planets = std::count_if(
