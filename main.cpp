@@ -335,16 +335,16 @@ int main(int argc, char** argv) {
                 << "!\n";
         }
     }else{
-      for (unsigned int team_id = 0; team_id < 2; team_id++) {
-          unsigned int team_mate = networking.get_team(team_id);
+      for (int team_id = 0; team_id < 2; team_id++) {
+          int team_mate = networking.get_team(team_id);
           auto& player_stats = stats.player_statistics[team_id];
           auto& mate_stats = stats.player_statistics[team_mate];
           std::string rank;
 
           if (player_stats.tag == 1 || mate_stats.tag == 1){
-            rank = "2nd";
-          }else{
             rank = "1st";
+          }else{
+            rank = "2nd";
           }
 
           std::cout

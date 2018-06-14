@@ -1058,23 +1058,12 @@ GameStatistics Halite::run_game(std::vector<std::string>* names_,
 
     auto game_complete = [&]() -> bool {
         const auto num_living_players = std::count(living_players.begin(), living_players.end(), true);
-        bool both_teams = true;
+        std::vector<bool> living_teams { false, false };
         if (networking.team_battle){
-          both_teams = true;
-          unsigned int alive_team = -1;
-          for (hlt::PlayerId player_id = 0; player_id < number_of_players; player_id++) {
-            if (living_players[player_id]) {
-                if (player_id == 0 || player_id == 2){
-                  if (alive_team != -1 && alive_team != 1){
-                    both_teams = true;
-                  }
-                  alive_team = 1;
-                }else{
-                  if (alive_team != -1 && alive_team != 2){
-                    both_teams = true;
-                  }
-                  alive_team = 2;
-                }
+          for (hlt::PlayerId player_id = 0; player_id < 2; player_id++) {
+            int team_mate = networking.get_team(player_id);
+            if (living_players[player_id] || living_players[team_mate]) {
+              living_teams[player_id] = true;
             }
           }
         }
@@ -1082,7 +1071,7 @@ GameStatistics Halite::run_game(std::vector<std::string>* names_,
         return turn_number >= max_turn_number ||
             (num_living_players <= 1 && number_of_players > 1) ||
             (num_living_players == 0 && number_of_players == 1) ||
-            !both_teams;
+            living_teams[0] != living_teams[1];
     };
 
     // Sort ranking by number of ships, using total ship health to break ties.
