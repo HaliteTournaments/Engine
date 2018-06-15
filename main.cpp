@@ -341,7 +341,7 @@ int main(int argc, char** argv) {
           auto& mate_stats = stats.player_statistics[team_mate];
           std::string rank;
 
-          if (player_stats.tag == 1 || mate_stats.tag == 1){
+          if (player_stats.rank == 1 || mate_stats.rank == 1){
             rank = "1st";
           }else{
             rank = "2nd";
