@@ -141,7 +141,7 @@ int main(int argc, char** argv) {
 
     TCLAP::SwitchArg teamSwitch("",
                                 "team",
-                                "Run with 2v2 mode, first two players paired with second two",
+                                "Run with 2v2 mode, first player paired with third and second with fourth",
                                 cmd,
                                 false);
 
